@@ -1,35 +1,42 @@
+use cs157b;
+
 CREATE TABLE School
 (
-  School_Name INT NOT NULL,
-  SchoolID INT NOT NULL,
+  SchoolName INT NOT NULL,
+  SchoolID int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (SchoolID)
 );
+ALTER table School  auto_increment = 1000;
 
 CREATE TABLE User
 (
-  UserID INT NOT NULL,
+  UserID int NOT NULL AUTO_INCREMENT,
   UserName INT NOT NULL,
   Email INT NOT NULL,
   password INT NOT NULL,
   PRIMARY KEY (UserID)
 );
+ALTER table User auto_increment = 10000;
 
 CREATE TABLE Professor
 (
-  ProfessorID INT NOT NULL,
-  last_name INT NOT NULL,
-  first_name INT NOT NULL,
+  ProfessorID int NOT NULL AUTO_INCREMENT, 
+  LastName INT NOT NULL,
+  FirstName INT NOT NULL,
   PRIMARY KEY (ProfessorID)
 );
+ALTER table Professor auto_increment = 1;
 
 CREATE TABLE Department
 (
-  DepartmentID INT NOT NULL,
+  DepartmentID int NOT NULL AUTO_INCREMENT,
   DepartmenCode INT NOT NULL,
+  DepartmentName VARCHAR(50),
   SchoolID INT NOT NULL,
   PRIMARY KEY (DepartmentID),
   FOREIGN KEY (SchoolID) REFERENCES School(SchoolID)
 );
+ALTER table Department auto_increment = 100;
 
 CREATE TABLE TeachAt
 (
@@ -56,20 +63,21 @@ CREATE TABLE Professor_Email
   FOREIGN KEY (ProfessorID) REFERENCES Professor(ProfessorID)
 );
 
-CREATE TABLE CLASS
+CREATE TABLE Class
 (
-  ClassID INT NOT NULL,
-  Class_Name INT NOT NULL,
+  ClassID int NOT NULL AUTO_INCREMENT, 
+  ClassName INT NOT NULL,
   DepartmentID INT NOT NULL,
   ProfessorID INT NOT NULL,
   PRIMARY KEY (ClassID),
   FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID),
   FOREIGN KEY (ProfessorID) REFERENCES Professor(ProfessorID)
 );
+ALTER table Class auto_increment = 10;
 
 CREATE TABLE NoteBook
 (
-  NoteBookID INT NOT NULL,
+  NotebookID int NOT NULL AUTO_INCREMENT,
   NotebookName INT NOT NULL,
   UserID INT NOT NULL,
   ClassID INT NOT NULL,
@@ -77,12 +85,13 @@ CREATE TABLE NoteBook
   FOREIGN KEY (UserID) REFERENCES User(UserID),
   FOREIGN KEY (ClassID) REFERENCES CLASS(ClassID)
 );
+ALTER table Notebook auto_increment = 1000;
 
 CREATE TABLE Note
 (
   Definition INT,
   Term INT NOT NULL,
-  NoteID INT NOT NULL,
+  NoteID INT NOT NULL AUTO_INCREMENT,
   NoteBookID INT NOT NULL,
   PRIMARY KEY (NoteID),
   FOREIGN KEY (NoteBookID) REFERENCES NoteBook(NoteBookID)
@@ -90,7 +99,7 @@ CREATE TABLE Note
 
 CREATE TABLE Vote
 (
-  User_Rating INT NOT NULL,
+  UserRating INT NOT NULL,
   NoteBookID INT NOT NULL,
   UserID INT NOT NULL,
   PRIMARY KEY (NoteBookID, UserID),
