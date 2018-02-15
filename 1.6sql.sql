@@ -2,7 +2,7 @@ use cs157b;
 
 CREATE TABLE School
 (
-  SchoolName INT NOT NULL,
+  SchoolName VARCHAR(50) NOT NULL,
   SchoolID int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (SchoolID)
 );
@@ -11,9 +11,9 @@ ALTER table School  auto_increment = 1000;
 CREATE TABLE User
 (
   UserID int NOT NULL AUTO_INCREMENT,
-  UserName INT NOT NULL,
-  Email INT NOT NULL,
-  password INT NOT NULL,
+  UserName VARCHAR(50) NOT NULL,
+  Email VARCHAR(50) NOT NULL,
+  password VARCHAR(50) NOT NULL,
   PRIMARY KEY (UserID)
 );
 ALTER table User auto_increment = 10000;
@@ -21,8 +21,8 @@ ALTER table User auto_increment = 10000;
 CREATE TABLE Professor
 (
   ProfessorID int NOT NULL AUTO_INCREMENT, 
-  LastName INT NOT NULL,
-  FirstName INT NOT NULL,
+  LastName VARCHAR(50) NOT NULL,
+  FirstName VARCHAR(50) NOT NULL,
   PRIMARY KEY (ProfessorID)
 );
 ALTER table Professor auto_increment = 1;
@@ -30,8 +30,8 @@ ALTER table Professor auto_increment = 1;
 CREATE TABLE Department
 (
   DepartmentID int NOT NULL AUTO_INCREMENT,
-  DepartmenCode INT NOT NULL,
-  DepartmentName VARCHAR(50),
+  DepartmenCode VARCHAR(50),
+  DepartmentName VARCHAR(50) NOT NULL,
   SchoolID INT NOT NULL,
   PRIMARY KEY (DepartmentID),
   FOREIGN KEY (SchoolID) REFERENCES School(SchoolID)
@@ -57,7 +57,7 @@ CREATE TABLE Professor_Phone
 
 CREATE TABLE Professor_Email
 (
-  Email INT NOT NULL,
+  Email VARCHAR(50) NOT NULL,
   ProfessorID INT NOT NULL,
   PRIMARY KEY (Email, ProfessorID),
   FOREIGN KEY (ProfessorID) REFERENCES Professor(ProfessorID)
@@ -66,7 +66,7 @@ CREATE TABLE Professor_Email
 CREATE TABLE Class
 (
   ClassID int NOT NULL AUTO_INCREMENT, 
-  ClassName INT NOT NULL,
+  ClassName VARCHAR(50) NOT NULL,
   DepartmentID INT NOT NULL,
   ProfessorID INT NOT NULL,
   PRIMARY KEY (ClassID),
@@ -78,7 +78,7 @@ ALTER table Class auto_increment = 10;
 CREATE TABLE NoteBook
 (
   NotebookID int NOT NULL AUTO_INCREMENT,
-  NotebookName INT NOT NULL,
+  NotebookName VARCHAR(50) NOT NULL,
   UserID INT NOT NULL,
   ClassID INT NOT NULL,
   PRIMARY KEY (NoteBookID),
@@ -89,8 +89,8 @@ ALTER table Notebook auto_increment = 1000;
 
 CREATE TABLE Note
 (
-  Definition INT,
-  Term INT NOT NULL,
+  Definition VARCHAR(126) NOT NULL,
+  Term VARCHAR(100) NOT NULL,
   NoteID INT NOT NULL AUTO_INCREMENT,
   NoteBookID INT NOT NULL,
   PRIMARY KEY (NoteID),
