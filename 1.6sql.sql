@@ -30,7 +30,7 @@ ALTER table Professor auto_increment = 1;
 CREATE TABLE Department
 (
   DepartmentID int NOT NULL AUTO_INCREMENT,
-  DepartmenCode VARCHAR(50),
+  DepartmentCode VARCHAR(50),
   DepartmentName VARCHAR(50) NOT NULL,
   SchoolID INT NOT NULL,
   PRIMARY KEY (DepartmentID),
