@@ -8,7 +8,6 @@
 <body>
     <h1>Query Results</h1>
     <?php
-        require('Department.php');
         require('Professor.php');
 
         function createTableRow(Professor $p) {
