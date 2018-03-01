@@ -15,9 +15,9 @@
  * Date: 2018/2/28
  * Time: 下午6:31
  */
-require('NoteBook.php');
+require('Notebook.php');
 
-function createTableRow(NoteBook $d)
+function createTableRow(Notebook $d)
 {
     print "        <tr>\n";
     print "            <td>" . $d->getNotebookID() . "</td>\n";
@@ -27,11 +27,11 @@ function createTableRow(NoteBook $d)
     print "        </tr>\n";
 
 }
-$noteBookId = filter_input(INPUT_GET, "noteBookId");
-$noteBookName  = filter_input(INPUT_GET, "noteBookName");
+$notebookId = filter_input(INPUT_GET, "NotebookID");
+$notebookName  = filter_input(INPUT_GET, "NotebookName");
 
 echo " Print all Name";
-echo " notebook ID : ". $noteBookId . " notebook name " . $noteBookName  ;
+echo " notebook ID : ". $notebookId . " notebook name " . $notebookName  ;
 try {
     // Connect to the database.
     $con = new PDO("mysql:host=localhost;dbname=cs157b",
@@ -39,11 +39,11 @@ try {
     $con->setAttribute(PDO::ATTR_ERRMODE,
         PDO::ERRMODE_EXCEPTION);
 
-    $query = "SELECT * FROM NoteBook";
+    $query = "SELECT * FROM Notebook";
 
     // Fetch the matching database table rows.
     $data = $con->query($query);
-    $data->setFetchMode(PDO::FETCH_CLASS, "NoteBook");
+    $data->setFetchMode(PDO::FETCH_CLASS, "Notebook");
 
     // We're going to construct an HTML table.
     print "    <table border='1'>\n";
@@ -60,15 +60,14 @@ try {
     print "            </tr>\n";
 
     // Constrain the query if we got first and last names.
-    if ((strlen($noteBookId) > 0) || (strlen($noteBookName)>0)) {
+    if ((strlen($notebookId) > 0) || (strlen($notebookName)>0)) {
 
-        $query = "SELECT * FROM NoteBook".
-            "WHERE  NotebookID = :noteBookId ".
-            "OR     NotebookName = :noteBookName ";
-        ;
+        $query = "SELECT * FROM Notebook ".
+            "WHERE  NotebookID = :notebookId ".
+            "OR     NotebookName = :notebookName ";
         $sql = $con->prepare($query);
-        $sql->bindParam(':noteBookId', $noteBookId);
-        $sql->bindParam(':noteBookName', $noteBookName);
+        $sql->bindParam(':notebookId', $notebookId);
+        $sql->bindParam(':notebookName', $notebookName);
     }
     else {
         $sql = $con->prepare($query);
@@ -76,11 +75,11 @@ try {
 
     // Fetch the matching database table rows.
     $sql->execute();
-    $sql->setFetchMode(PDO::FETCH_CLASS, "NoteBook");
+    $sql->setFetchMode(PDO::FETCH_CLASS, "Notebook");
 
     // Construct the HTML table row by row.
-    while ($noteBook = $sql->fetch()) {
-        createTableRow($noteBook);
+    while ($notebook = $sql->fetch()) {
+        createTableRow($notebook);
     }
 
     print "    </table>\n";
@@ -90,3 +89,7 @@ catch(PDOException $ex) {
 }
 
 ?>
+
+<a href="index.html"> back </a>
+</body>
+</html>

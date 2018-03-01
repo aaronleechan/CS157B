@@ -162,14 +162,14 @@ CREATE TABLE `Note` (
   `Definition` varchar(126) NOT NULL,
   `Term` varchar(100) NOT NULL,
   `NoteID` int(11) NOT NULL,
-  `NoteBookID` int(11) NOT NULL
+  `NotebookID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Note`
 --
 
-INSERT INTO `Note` (`Definition`, `Term`, `NoteID`, `NoteBookID`) VALUES
+INSERT INTO `Note` (`Definition`, `Term`, `NoteID`, `NotebookID`) VALUES
 ('Brain of the computer that performs instructions defined by software', 'Central Processing Unit (CPU)', 1, 1000),
 ('Storage device that stores digitally encoded data on rapidly rotating rigid disks with magnetic surfaces. The device is either', 'Hard Drive', 2, 1001),
 ('Printed circuit board on which the CPU, RAM chips and other electronic circuit elements of a digital computer are frequently l', 'Motherboard', 3, 1003),
@@ -182,10 +182,10 @@ INSERT INTO `Note` (`Definition`, `Term`, `NoteID`, `NoteBookID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `NoteBook`
+-- Table structure for table `Notebook`
 --
 
-CREATE TABLE `NoteBook` (
+CREATE TABLE `Notebook` (
   `NotebookID` int(11) NOT NULL,
   `NotebookName` varchar(50) NOT NULL,
   `UserID` int(11) NOT NULL,
@@ -193,10 +193,10 @@ CREATE TABLE `NoteBook` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `NoteBook`
+-- Dumping data for table `Notebook`
 --
 
-INSERT INTO `NoteBook` (`NotebookID`, `NotebookName`, `UserID`, `ClassID`) VALUES
+INSERT INTO `Notebook` (`NotebookID`, `NotebookName`, `UserID`, `ClassID`) VALUES
 (1000, 'Database', 10001, 10),
 (1001, 'Operating system', 10002, 11),
 (1002, 'Data structure', 10004, 12),
@@ -337,7 +337,7 @@ CREATE TABLE `User` (
 
 INSERT INTO `User` (`UserID`, `UserName`, `Email`, `password`) VALUES
 (10000, 'thurgood8', 'aqufirrop-1556@yopmail.com', '99>Kq8ErCLp\'ac??'),
-(10001, 'strainerstate', 'pimmiliqaj-8270@yopmail.com', 'QT@4D8[9\"7\'!2[s>),
+(10001, 'strainerstate', 'pimmiliqaj-8270@yopmail.com', 'QT@4D8[9\"7\'!2[s>'),
 (10002, 'immersiontraits', 'xigopecu-2293@yopmail.com', 'st\"YyUUNRA($(8t4'),
 (10003, 'assetthere', 'qabazimo-8291@yopmail.com', '}X_N#e+8?W\"]R4JQ'),
 (10004, 'spokenoften', 'uddavewiss-2629@yopmail.com', 'u_qZM9q`w9r-9rc-'),
@@ -352,7 +352,7 @@ INSERT INTO `User` (`UserID`, `UserName`, `Email`, `password`) VALUES
 
 CREATE TABLE `Vote` (
   `UserRating` int(11) NOT NULL,
-  `NoteBookID` int(11) NOT NULL,
+  `NotebookID` int(11) NOT NULL,
   `UserID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -360,7 +360,7 @@ CREATE TABLE `Vote` (
 -- Dumping data for table `Vote`
 --
 
-INSERT INTO `Vote` (`UserRating`, `NoteBookID`, `UserID`) VALUES
+INSERT INTO `Vote` (`UserRating`, `NotebookID`, `UserID`) VALUES
 (5, 1000, 10000),
 (4, 1001, 10002),
 (4, 1002, 10005),
@@ -394,12 +394,12 @@ ALTER TABLE `Department`
 --
 ALTER TABLE `Note`
   ADD PRIMARY KEY (`NoteID`),
-  ADD KEY `NoteBookID` (`NoteBookID`);
+  ADD KEY `NotebookID` (`NotebookID`);
 
 --
--- Indexes for table `NoteBook`
+-- Indexes for table `Notebook`
 --
-ALTER TABLE `NoteBook`
+ALTER TABLE `Notebook`
   ADD PRIMARY KEY (`NotebookID`),
   ADD KEY `UserID` (`UserID`),
   ADD KEY `ClassID` (`ClassID`);
@@ -447,7 +447,7 @@ ALTER TABLE `User`
 -- Indexes for table `Vote`
 --
 ALTER TABLE `Vote`
-  ADD PRIMARY KEY (`NoteBookID`,`UserID`),
+  ADD PRIMARY KEY (`NotebookID`,`UserID`),
   ADD KEY `UserID` (`UserID`);
 
 --
@@ -470,9 +470,9 @@ ALTER TABLE `Department`
 ALTER TABLE `Note`
   MODIFY `NoteID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `NoteBook`
+-- AUTO_INCREMENT for table `Notebook`
 --
-ALTER TABLE `NoteBook`
+ALTER TABLE `Notebook`
   MODIFY `NotebookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1009;
 --
 -- AUTO_INCREMENT for table `Professor`
@@ -510,12 +510,12 @@ ALTER TABLE `Department`
 -- Constraints for table `Note`
 --
 ALTER TABLE `Note`
-  ADD CONSTRAINT `note_ibfk_1` FOREIGN KEY (`NoteBookID`) REFERENCES `NoteBook` (`NotebookID`);
+  ADD CONSTRAINT `note_ibfk_1` FOREIGN KEY (`NotebookID`) REFERENCES `Notebook` (`NotebookID`);
 
 --
--- Constraints for table `NoteBook`
+-- Constraints for table `Notebook`
 --
-ALTER TABLE `NoteBook`
+ALTER TABLE `Notebook`
   ADD CONSTRAINT `notebook_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`),
   ADD CONSTRAINT `notebook_ibfk_2` FOREIGN KEY (`ClassID`) REFERENCES `CLASS` (`ClassID`);
 
@@ -542,7 +542,7 @@ ALTER TABLE `TeachAt`
 -- Constraints for table `Vote`
 --
 ALTER TABLE `Vote`
-  ADD CONSTRAINT `vote_ibfk_1` FOREIGN KEY (`NoteBookID`) REFERENCES `NoteBook` (`NotebookID`),
+  ADD CONSTRAINT `vote_ibfk_1` FOREIGN KEY (`NotebookID`) REFERENCES `Notebook` (`NotebookID`),
   ADD CONSTRAINT `vote_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`);
 COMMIT;
 

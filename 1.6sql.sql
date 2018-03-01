@@ -20,7 +20,7 @@ ALTER table User auto_increment = 10000;
 
 CREATE TABLE Professor
 (
-  ProfessorID int NOT NULL AUTO_INCREMENT, 
+  ProfessorID int NOT NULL AUTO_INCREMENT,
   LastName VARCHAR(50) NOT NULL,
   FirstName VARCHAR(50) NOT NULL,
   PRIMARY KEY (ProfessorID)
@@ -65,7 +65,7 @@ CREATE TABLE Professor_Email
 
 CREATE TABLE Class
 (
-  ClassID int NOT NULL AUTO_INCREMENT, 
+  ClassID int NOT NULL AUTO_INCREMENT,
   ClassName VARCHAR(50) NOT NULL,
   DepartmentID INT NOT NULL,
   ProfessorID INT NOT NULL,
@@ -75,13 +75,13 @@ CREATE TABLE Class
 );
 ALTER table Class auto_increment = 10;
 
-CREATE TABLE NoteBook
+CREATE TABLE Notebook
 (
   NotebookID int NOT NULL AUTO_INCREMENT,
   NotebookName VARCHAR(50) NOT NULL,
   UserID INT NOT NULL,
   ClassID INT NOT NULL,
-  PRIMARY KEY (NoteBookID),
+  PRIMARY KEY (NotebookID),
   FOREIGN KEY (UserID) REFERENCES User(UserID),
   FOREIGN KEY (ClassID) REFERENCES CLASS(ClassID)
 );
@@ -92,17 +92,17 @@ CREATE TABLE Note
   Definition VARCHAR(126) NOT NULL,
   Term VARCHAR(100) NOT NULL,
   NoteID INT NOT NULL AUTO_INCREMENT,
-  NoteBookID INT NOT NULL,
+  NotebookID INT NOT NULL,
   PRIMARY KEY (NoteID),
-  FOREIGN KEY (NoteBookID) REFERENCES NoteBook(NoteBookID)
+  FOREIGN KEY (NotebookID) REFERENCES Notebook(NotebookID)
 );
 
 CREATE TABLE Vote
 (
   UserRating INT NOT NULL,
-  NoteBookID INT NOT NULL,
+  NotebookID INT NOT NULL,
   UserID INT NOT NULL,
-  PRIMARY KEY (NoteBookID, UserID),
-  FOREIGN KEY (NoteBookID) REFERENCES NoteBook(NoteBookID),
+  PRIMARY KEY (NotebookID, UserID),
+  FOREIGN KEY (NotebookID) REFERENCES Notebook(NotebookID),
   FOREIGN KEY (UserID) REFERENCES User(UserID)
 );

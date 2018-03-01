@@ -9,12 +9,12 @@
 class Note
 {
     private $NoteID;
-    private $NoteBookID;
+    private $NotebookID;
     private $Definition;
-    private $term;
+    private $Term;
     public function getNoteID(){return $this->NoteID;}
-    public function getNoteBookID(){return $this->NoteBookID;}
+    public function getNoteBookID(){return $this->NotebookID;}
     public function getDefinition(){return $this->Definition;}
-    public function getTerm(){return $this->term;}
+    public function getTerm(){return $this->Term;}
 
 }

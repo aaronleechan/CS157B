@@ -6,7 +6,7 @@
  * Time: 下午3:47
  */
 
-class NoteBook
+class Notebook
 {
   private $NotebookID;
   private $NotebookName;
