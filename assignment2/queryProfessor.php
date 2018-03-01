@@ -48,19 +48,22 @@
             }
             print "            </tr>\n";
 
+
+            /// constrain the query if we got first name
+
             // Constrain the query if we got first and last names.
-            if ((strlen($first) > 0) && (strlen($last) > 0)) {
+            if ((strlen($first) > 0) || (strlen($last) > 0)) {
                 $query = "SELECT * FROM professor ".
                          "WHERE firstname = :first ".
-                         "AND   lastname  = :last";
+                         "OR   lastname  = :last";
                 $sql = $con->prepare($query);
                 $sql->bindParam(':first', $first);
                 $sql->bindParam(':last',  $last);
             }
             else {
+
                 $sql = $con->prepare($query);
             }
-
             // Fetch the matching database table rows.
             $sql->execute();
             $sql->setFetchMode(PDO::FETCH_CLASS, "Professor");

@@ -337,7 +337,7 @@ CREATE TABLE `User` (
 
 INSERT INTO `User` (`UserID`, `UserName`, `Email`, `password`) VALUES
 (10000, 'thurgood8', 'aqufirrop-1556@yopmail.com', '99>Kq8ErCLp\'ac??'),
-(10001, 'strainerstate', 'pimmiliqaj-8270@yopmail.com', 'QT@4D8[9\"7\'!2[s>'),
+(10001, 'strainerstate', 'pimmiliqaj-8270@yopmail.com', 'QT@4D8[9\"7\'!2[s>),
 (10002, 'immersiontraits', 'xigopecu-2293@yopmail.com', 'st\"YyUUNRA($(8t4'),
 (10003, 'assetthere', 'qabazimo-8291@yopmail.com', '}X_N#e+8?W\"]R4JQ'),
 (10004, 'spokenoften', 'uddavewiss-2629@yopmail.com', 'u_qZM9q`w9r-9rc-'),
