@@ -30,8 +30,6 @@ function createTableRow(Notebook $d)
 $notebookId = filter_input(INPUT_GET, "NotebookID");
 $notebookName  = filter_input(INPUT_GET, "NotebookName");
 
-echo " Print all Name";
-echo " notebook ID : ". $notebookId . " notebook name " . $notebookName  ;
 try {
     // Connect to the database.
     $con = new PDO("mysql:host=localhost;dbname=cs157b",

@@ -23,11 +23,6 @@ $departmentId = filter_input(INPUT_GET, "departmentId");
 $departmentCode  = filter_input(INPUT_GET, "departmentCode");
 $departmentName = filter_input(INPUT_GET, "departmentName");
 
-echo " Print all Name";
-echo " department code : ". $departmentCode . " name " . $departmentName . " id " . $departmentId;
-
-
-
 try {
     // Connect to the database.
     $con = new PDO("mysql:host=localhost;dbname=cs157b",
