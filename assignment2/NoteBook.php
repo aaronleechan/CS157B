@@ -12,9 +12,14 @@ class NoteBook
   private $NotebookName;
   private $UserID;
   private $ClassID;
-    public function getNotebookID() { return $this->NotebookID; }
-    public function getNotebookName() { return $this->NotebookName; }
-    public function getUserID() { return $this->UserID; }
-    public function getClassID(){return $this->ClassID;}
+
+
+  public function getNotebookID() { return $this->NotebookID; }
+
+  public function getNotebookName() { return $this->NotebookName; }
+
+  public function getUserID() { return $this->UserID; }
+
+  public function getClassID(){return $this->ClassID;}
 
 }

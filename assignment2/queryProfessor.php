@@ -49,8 +49,6 @@
             print "            </tr>\n";
 
 
-            /// constrain the query if we got first name
-
             // Constrain the query if we got first and last names.
             if ((strlen($first) > 0) || (strlen($last) > 0)) {
                 $query = "SELECT * FROM professor ".
