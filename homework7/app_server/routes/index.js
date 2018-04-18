@@ -5,6 +5,11 @@ var modelMain = require("../models/modelMain");
 
 console.log("Router:"); console.log(router);
 
+
+router.get('/deletenote/:term', ctrlMain.get_deletenote);
+
+router.post('/deletenote/:term', modelMain.post_deletenote);
+
 /*
  * GET home page.
  */
@@ -24,6 +29,9 @@ router.get('/newnote', ctrlMain.get_newnote);
  * POST add note page.
  */
 router.post('/addnote', modelMain.post_addnote);
+/*
+
+ */
 
 /*
  * GET show note page.

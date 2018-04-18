@@ -1,20 +1,23 @@
 /*
  * GET user list page.
  */
+
+
+/*
+ * GET show user page.
+ */
 module.exports.get_notelist = function(req, res)
 {
     var db = req.db;
     var collection = db.get('notecollection');
     collection.find({}, {},
-                    function(err, docs)
-                    {
-                        res.render('notelist', { "notelist" : docs });
-                    });
+        function(err, docs)
+        {
+            res.render('notelist', { "notelist" : docs });
+        });
 };
 
-/*
- * GET show user page.
- */
+
 module.exports.get_shownote = function(req, res)
 {
     var term = req.params.term;
@@ -34,6 +37,7 @@ module.exports.get_shownote = function(req, res)
                          }
                      });
 };
+
 
 /*
  * POST add note page.
@@ -100,21 +104,21 @@ module.exports.post_updatenote = function(req, res)
 /*
  * GET delete user page.
  */
-module.exports.get_deleteuser = function(req, res)
+module.exports.post_deletenote = function(req, res)
 {
-    var uname = req.params.username;
+    var term = req.params.term;
     var db = req.db;
-    var collection = db.get('usercollection');
+    var collection = db.get('notecollection');
 
     // Submit to the database.
-    collection.remove( { "username" : uname },
+    collection.remove( { "term" : term },
                        function (err, doc)
                        {
                            if (err) {
                                res.send("Delete failed.");
                            }
                            else {
-                               res.send("Successfully deleted " + uname);
+                               res.send("Successfully deleted " + term);
                            }
                        });
 };

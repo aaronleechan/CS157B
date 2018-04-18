@@ -22,3 +22,9 @@ module.exports.get_editnote = function(req, res)
     var term = req.params.term;
     res.render('editnote', { title: 'Edit Note', term: term });
 };
+
+module.exports.get_deletenote = function(req, res)
+{
+    var term = req.params.term;
+    res.render('deletenote', {"term" : term} );
+};
