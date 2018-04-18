@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1.
+        Notes
+    ul
+        each note in notelist
+            li
+                p.term #{note.term}
+                p #{note.definition}
