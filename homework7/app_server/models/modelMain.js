@@ -35,6 +35,26 @@ module.exports.get_shownote = function(req, res)
                      });
 };
 
+module.exports.post_deletenote = function(req, res) 
+{
+    var term = req.params.term;
+    var db = req.db;
+    var collection = db.get('notecollection');
+
+    // Submit to the database.
+    collection.remove( { "term" : term },
+                       function (err, doc) 
+                       {
+                           if (err) {
+                               res.send("Delete failed.");
+                           }
+                           else {
+                               res.send("Successfully deleted " + term);
+                           }
+                       });
+};
+
+
 /*
  * POST add note page.
  */
@@ -65,24 +85,4 @@ module.exports.post_addnote = function(req, res)
                        });
 };
 
-/*
- * GET delete user page.
- */
-module.exports.get_deleteuser = function(req, res)
-{
-    var uname = req.params.username;
-    var db = req.db;
-    var collection = db.get('usercollection');
 
-    // Submit to the database.
-    collection.remove( { "username" : uname },
-                       function (err, doc)
-                       {
-                           if (err) {
-                               res.send("Delete failed.");
-                           }
-                           else {
-                               res.send("Successfully deleted " + uname);
-                           }
-                       });
-};

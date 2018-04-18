@@ -30,14 +30,14 @@ router.post('/addnote', modelMain.post_addnote);
  */
 router.get('/notelist/:term', modelMain.get_shownote);
 
-// /*
-//  * GET delete user page.
-//  */
-// router.get('/deleteuser/:username', ctrlMain.get_deleteuser);
-//
-// /*
-//  * POST delete user page.
-//  */
-// router.post('/deleteuser/:username', modelMain.post_deleteuser);
+/*
+ * GET delete user page.
+ */
+router.get('/deletenote/:term', ctrlMain.get_deletenote);
+
+/*
+ * POST delete user page.
+ */
+router.post('/deletenote/:term', modelMain.post_deletenote);
 
 module.exports = router;

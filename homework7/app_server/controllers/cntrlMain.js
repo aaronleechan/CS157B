@@ -13,3 +13,11 @@ module.exports.get_newnote = function(req, res)
 {
     res.render('newnote', { title: 'Add New Note' });
 };
+
+
+module.exports.get_deletenote = function(req, res) 
+{
+    var term = req.params.term;
+    res.render('deletenote', { "term" : term} );
+};
+
