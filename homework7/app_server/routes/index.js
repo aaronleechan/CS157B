@@ -11,7 +11,7 @@ console.log("Router:"); console.log(router);
 router.get('/', ctrlMain.home);
 
 /*
- * GET user list page.
+ * GET note list page.
  */
 router.get('/notelist', modelMain.get_notelist);
 
@@ -25,11 +25,11 @@ router.get('/newnote', ctrlMain.get_newnote);
  */
 router.post('/addnote', modelMain.post_addnote);
 
-// /*
-//  * GET show user page.
-//  */
-// router.get('/userlist/:username', modelMain.get_showuser);
-//
+/*
+ * GET show note page.
+ */
+router.get('/notelist/:term', modelMain.get_shownote);
+
 // /*
 //  * GET delete user page.
 //  */

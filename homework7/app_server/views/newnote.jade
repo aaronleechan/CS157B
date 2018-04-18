@@ -3,6 +3,6 @@ extends layout
 block content
     h1= title
     form#formAddUser(name="addnote",method="post",action="/addnote")
-        input#inputTerm(type="text", placeholder="term", name="term")
-        input#inputDefinition(type="text", placeholder="definition", name="definition")
+        input#inputTerm(type="text", placeholder="term", name="term" required)
+        input#inputDefinition(type="text", placeholder="definition", name="definition" required)
         button#btnSubmit(type="submit") submit
