@@ -1,17 +1,42 @@
 /*
  * GET user list page.
  */
+
+
+/*
+ * GET show user page.
+ */
 module.exports.get_notelist = function(req, res)
 {
     var db = req.db;
     var collection = db.get('notecollection');
     collection.find({}, {},
-                    function(err, docs)
-                    {
-                        res.render('notelist', { "notelist" : docs });
-                    });
+        function(err, docs)
+        {
+            res.render('notelist', { "notelist" : docs });
+        });
 };
 
+
+module.exports.get_shownote = function(req, res)
+{
+    var term = req.params.term;
+    var db = req.db;
+    var collection = db.get('notecollection');
+
+    collection.find( { term : term },
+        function(err, doc)
+        {
+            if (err) {
+                res.send("Find failed.");
+            }
+            else {
+                res.render('shownote',
+                    { term: doc[0].term,
+                        definition: doc[0].definition })
+            }
+        });
+};
 
 
 /*

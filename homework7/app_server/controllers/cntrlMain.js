@@ -3,7 +3,7 @@
  */
 module.exports.home = function(req, res)
 {
-    res.render('index', { title: 'MongoDB-Express Demo' });
+    res.render('index', { title: 'Team6 Homework 7' });
 };
 
 /*

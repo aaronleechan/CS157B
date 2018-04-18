@@ -5,13 +5,18 @@ var modelMain = require("../models/modelMain");
 
 console.log("Router:"); console.log(router);
 
+
+router.get('/deletenote/:term', ctrlMain.get_deletenote);
+
+router.post('/deletenote/:term', modelMain.post_deletenote);
+
 /*
  * GET home page.
  */
 router.get('/', ctrlMain.home);
 
 /*
- * GET user list page.
+ * GET note list page.
  */
 router.get('/notelist', modelMain.get_notelist);
 
@@ -26,10 +31,18 @@ router.get('/newnote', ctrlMain.get_newnote);
 router.post('/addnote', modelMain.post_addnote);
 
 /*
- * GET delete user page.
+ * GET show note page.
  */
-router.get('/deletenote/:term', ctrlMain.get_deletenote);
+router.get('/notelist/:term', modelMain.get_shownote);
 
-router.post('/deletenote/:term', modelMain.post_deletenote);
+// /*
+//  * GET delete user page.
+//  */
+// router.get('/deleteuser/:username', ctrlMain.get_deleteuser);
+//
+// /*
+//  * POST delete user page.
+//  */
+// router.post('/deleteuser/:username', modelMain.post_deleteuser);
 
 module.exports = router;
