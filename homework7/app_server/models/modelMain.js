@@ -12,28 +12,7 @@ module.exports.get_notelist = function(req, res)
                     });
 };
 
-/*
- * GET show user page.
- */
-module.exports.get_showuser = function(req, res)
-{
-    var uname = req.params.username;
-    var db = req.db;
-    var collection = db.get('usercollection');
 
-    collection.find( { username : uname },
-                     function(err, doc)
-                     {
-                         if (err) {
-                             res.send("Find failed.");
-                         }
-                         else {
-                             res.render('showuser',
-                                        { title: 'Show User: ' + uname,
-                                          mail: doc[0].email })
-                         }
-                     });
-};
 
 /*
  * POST add note page.
@@ -68,21 +47,21 @@ module.exports.post_addnote = function(req, res)
 /*
  * GET delete user page.
  */
-module.exports.get_deleteuser = function(req, res)
+module.exports.post_deletenote = function(req, res)
 {
-    var uname = req.params.username;
+    var term = req.params.term;
     var db = req.db;
-    var collection = db.get('usercollection');
+    var collection = db.get('notecollection');
 
     // Submit to the database.
-    collection.remove( { "username" : uname },
+    collection.remove( { "term" : term },
                        function (err, doc)
                        {
                            if (err) {
                                res.send("Delete failed.");
                            }
                            else {
-                               res.send("Successfully deleted " + uname);
+                               res.send("Successfully deleted " + term);
                            }
                        });
 };
