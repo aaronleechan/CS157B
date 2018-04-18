@@ -24,6 +24,9 @@ router.get('/newnote', ctrlMain.get_newnote);
  * POST add note page.
  */
 router.post('/addnote', modelMain.post_addnote);
+/*
+
+ */
 
 // /*
 //  * GET show user page.
