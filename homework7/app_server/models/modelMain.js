@@ -24,7 +24,7 @@ module.exports.get_shownote = function(req, res)
     collection.find( { term : term },
                      function(err, doc)
                      {
-                         if (err) {
+                         if (err || doc.length === 0) {
                              res.send("Find failed.");
                          }
                          else {
@@ -47,6 +47,8 @@ module.exports.post_addnote = function(req, res)
     var term = req.body.term;
     var definition = req.body.definition;
 
+    console.log(definition);
+
     // Set our collection.
     var collection = db.get('notecollection');
 
@@ -57,6 +59,36 @@ module.exports.post_addnote = function(req, res)
                        {
                            if (err) {
                                res.send("Insert failed.");
+                           }
+                           else {
+                               // Forward to success page
+                               res.redirect("notelist");
+                           }
+                       });
+};
+
+/*
+ * POST update note page.
+ */
+module.exports.post_updatenote = function(req, res)
+{
+    // Set our internal DB variable
+    var db = req.db;
+
+    // Get our form values. These rely on the "name" attributes.
+    var term = req.body.term;
+    var definition = req.body.definition;
+
+    // Set our collection.
+    var collection = db.get('notecollection');
+
+    // Submit to the database.
+    collection.update( { "term" : term },
+                       { $set: {"definition" : definition}},
+                       function (err, doc)
+                       {
+                           if (err) {
+                               res.send("update failed.");
                            }
                            else {
                                // Forward to success page

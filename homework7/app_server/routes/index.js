@@ -16,7 +16,7 @@ router.get('/', ctrlMain.home);
 router.get('/notelist', modelMain.get_notelist);
 
 /*
- * GET new user page.
+ * GET new note page.
  */
 router.get('/newnote', ctrlMain.get_newnote);
 
@@ -30,14 +30,20 @@ router.post('/addnote', modelMain.post_addnote);
  */
 router.get('/notelist/:term', modelMain.get_shownote);
 
+
+/*
+ * GET edit note page.
+ */
+router.get('/editnote/:term', ctrlMain.get_editnote);
+
+/*
+ * POST update note page.
+ */
+router.post('/updatenote', modelMain.post_updatenote);
+
 // /*
-//  * GET delete user page.
+//  * POST delete note page.
 //  */
-// router.get('/deleteuser/:username', ctrlMain.get_deleteuser);
-//
-// /*
-//  * POST delete user page.
-//  */
-// router.post('/deleteuser/:username', modelMain.post_deleteuser);
+// router.post('/deletenote/:term', modelMain.post_deletnote);
 
 module.exports = router;

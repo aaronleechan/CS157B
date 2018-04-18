@@ -8,3 +8,6 @@ block content
             li
                 p.term #{note.term}
                 p #{note.definition}
+                a(href="/editnote/#{note.term}") edit
+                p
+                a(href="/editnote/#{note.term}") delete 

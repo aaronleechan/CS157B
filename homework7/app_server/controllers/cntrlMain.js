@@ -13,3 +13,12 @@ module.exports.get_newnote = function(req, res)
 {
     res.render('newnote', { title: 'Add New Note' });
 };
+
+/*
+ * GET edit note page.
+ */
+module.exports.get_editnote = function(req, res)
+{
+    var term = req.params.term;
+    res.render('editnote', { title: 'Edit Note', term: term });
+};
