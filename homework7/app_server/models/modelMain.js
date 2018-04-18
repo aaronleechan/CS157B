@@ -15,22 +15,22 @@ module.exports.get_notelist = function(req, res)
 /*
  * GET show user page.
  */
-module.exports.get_showuser = function(req, res)
+module.exports.get_shownote = function(req, res)
 {
-    var uname = req.params.username;
+    var term = req.params.term;
     var db = req.db;
-    var collection = db.get('usercollection');
+    var collection = db.get('notecollection');
 
-    collection.find( { username : uname },
+    collection.find( { term : term },
                      function(err, doc)
                      {
                          if (err) {
                              res.send("Find failed.");
                          }
                          else {
-                             res.render('showuser',
-                                        { title: 'Show User: ' + uname,
-                                          mail: doc[0].email })
+                             res.render('shownote',
+                                        { term: doc[0].term,
+                                          definition: doc[0].definition })
                          }
                      });
 };
