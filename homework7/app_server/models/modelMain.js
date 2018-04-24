@@ -118,7 +118,7 @@ module.exports.post_deletenote = function(req, res)
                                res.send("Delete failed.");
                            }
                            else {
-                               res.send("Successfully deleted " + term);
-                           }
+                               return res.redirect('/notelist')
+                       }
                        });
 };
