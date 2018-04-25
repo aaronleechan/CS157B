@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="class" type="Class_type"/>
+    <xs:complexType name="Class_type"> 
+        <xs:attribute name="ClassName" type="xs:string"/>
+        <xs:attribute name="ClassID" type="xs:string"/>
+      </xs:complexType>
+    
+    <xs:element name="professor" type="Professor_type"/>
+    <xs:complexType name="Professor_type"> 
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="professorName" type="xs:string" />
+                <xs:attribute name="professorID" type="xs:integer" />
+                <xs:attribute name="email" type="xs:integer" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+   
+    <xs:element name="department" type="department_type"/>
+    <xs:complexType name="department_type">
+        <xs:sequence>
+            <xs:element ref="class" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="departmentCode" type="xs:string"/>
+        <xs:attribute name="departmentID" type="xs:string"/>
+    </xs:complexType>
+    
+    <xs:element name="school" type="school_type"/>
+    <xs:complexType name="school_type">
+        <xs:sequence>
+            <xs:element ref="department" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="professor" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="schoolName" type="xs:string"/>
+        <xs:attribute name="schoolID" type="xs:string"/>
+    </xs:complexType>
+   </xs:schema>

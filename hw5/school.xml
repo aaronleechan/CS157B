@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<school schoolName = "San Jose State University" schoolID = "sjsu"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="school.xsd">
+    <department departmentName="computer science" departmentID="cs">
+        <class ClassName="object oriented design" ClassID="cs 151"/>
+        
+        <class ClassName="Programming Paradigms" ClassID="cs 152"/>
+        
+        <class ClassName="Data Structures and Algorithms" ClassID="cs 146"/>
+        
+        <class ClassName="Software Engineering" ClassID="cs 160"/>
+       
+    </department>
+    <department departmentName="software engineering" departmentID="se">
+        <class ClassName="object oriented design" ClassID="se 151"/>       
+        <class ClassName="Senior Design Project I" ClassID="se 195a"/>
+        <class ClassName="Data Structures and Algorithms" ClassID="se 146"/> 
+        <class ClassName="Software Engineering" ClassID="se 195b"/> 
+        </department>
+    <professor professorName = "Ronald Mak" professorID =  "10000" email="ron.mak@sjsu.edu" >
+    </professor>
+    <professor professorName = "Rula Khayrallah" professorID ="10001" email="rula.khayrallah@sjsu.edu" >   
+    </professor>
+    
+</school>

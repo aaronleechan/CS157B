@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<school schoolName = "University of California, Los Angeles" schoolID = "ucla"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="school.xsd">
+    <department departmentName="computer science" departmentID="cs">
+        <class ClassName="Operating Systems Principles" ClassID="cs 111"/>
+        
+        <class ClassName="Computer Networks" ClassID="cs 118"/>
+        
+        <class ClassName="Introduction to Computer Organization" ClassID="cs 33"/>
+        
+        <class ClassName=" Logic Design of Digital Systems" ClassID="cs m51a"/>
+        
+    </department>
+    <department departmentName="electrical engineering" departmentID="ee">
+        <class ClassName="Circuit Theory I" ClassID="EL ENGR 100-1,"/>       
+        <class ClassName="Engineering Electromagnetics" ClassID="ee 101a"/>
+        <class ClassName="Electromagnetic Waves" ClassID="ee 101b"/> 
+    </department>
+    <professor professorName = "Yahya Rahmat-Samii" professorID =  "1002" email="rahmat@ee.ucla.edu" >
+    </professor>
+    <professor professorName = "JOSHI, C.J" professorID ="1003" email="cjoshi@ucla.edu" >   
+    </professor>
+    
+</school>
+

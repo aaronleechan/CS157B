@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:complexType name="professor_type">
+        <xs:sequence>
+            <xs:element name="professorName" type="xs:string"/>
+            <xs:element name="professorEmail" type="xs:string"/>
+        </xs:sequence>
+        
+        <xs:attribute name="gender">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="male"/>
+                    <xs:enumeration value="female"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="professor" type="professor_type"></xs:element>
+    <xs:complexType name="department_type">
+        <xs:sequence>
+            <xs:element ref="professor" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="department" type="department_type"></xs:element>
+</xs:schema>

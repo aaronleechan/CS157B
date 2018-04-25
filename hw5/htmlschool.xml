@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<department xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="htmlschool.xsd">
+    
+    <professor gender="male">
+        <professorName>Ronald Mak</professorName>
+        <professorEmail>ron.mak@sjsu.edu</professorEmail>
+    </professor>
+    
+    <professor gender="female">
+        <professorName>Suneuy Kim</professorName>
+        <professorEmail>suneuy.kim@sjsu.edu</professorEmail>
+    </professor>
+    
+    <professor gender="male">
+        <professorName>Cay Horstmann</professorName>
+        <professorEmail>cay.horstmann@sjsu.edu</professorEmail>
+    </professor>
+    
+    <professor gender="female">
+        <professorName>Anna Meng</professorName>
+        <professorEmail>hsin-yi.meng@sjsu.edu</professorEmail>
+    </professor> 
+</department>
